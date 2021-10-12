@@ -34,8 +34,13 @@ function getCommitHash() {
     }
 }
 
+function getUser() {
+    return process.env.USER || null;
+}
+
 const versionJson = {
     builtAt: new Date().toISOString(),
+    builtBy: getUser(),
     branch: getBranchName(),
     commit: getCommitHash(),
 };
