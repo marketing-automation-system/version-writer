@@ -10,7 +10,6 @@ if (!outputFile) {
 const outputPath = path.join(process.cwd(), outputFile);
 console.log('outputPath', outputPath);
 
-
 function getBranchName() {
     try {
         const cmd = 'git rev-parse --abbrev-ref HEAD';
@@ -41,6 +40,8 @@ const versionJson = {
     commit: getCommitHash(),
 };
 
+console.log('Version...');
 console.log(JSON.stringify(versionJson, '', 4));
 
 fs.writeFileSync(outputPath, JSON.stringify(versionJson));
+console.log(`Written to ${outputPath}`);
