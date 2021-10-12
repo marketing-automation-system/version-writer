@@ -1,4 +1,5 @@
 /**
+ * @param {string} versionJsonPath
  * @param {Date} startedAt
  */
-export function getStatus(startedAt: Date): any;
+export function getStatus(versionJsonPath: string, startedAt: Date): any;
