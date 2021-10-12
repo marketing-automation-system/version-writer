@@ -1,13 +1,13 @@
 const fs = require('fs');
-const path = require('path');
 const formatDistanceStrict = require('date-fns/formatDistanceStrict');
 
 /**
+ * @param {string} versionJsonPath
  * @param {Date} startedAt
  */
-const getStatus = (startedAt) => {
+const getStatus = (versionJsonPath, startedAt) => {
     return {
-        ...JSON.parse(fs.readFileSync(path.resolve(__dirname, 'version.json')).toString()),
+        ...JSON.parse(fs.readFileSync(versionJsonPath).toString()),
         startedAt,
         started: `${formatDistanceStrict(startedAt)} ago`,
     };
