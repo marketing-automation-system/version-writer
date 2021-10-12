@@ -6,6 +6,7 @@
     "author": "",
     "license": "ISC",
     "scripts": {
+        "build": "npm run build-types",
         "build-types": "npx -p typescript tsc index.js --declaration --allowJs --emitDeclarationOnly"
     },
     "devDependencies": {
