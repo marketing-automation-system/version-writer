@@ -9,7 +9,7 @@ const getStatus = (versionJsonPath, startedAt) => {
     return {
         ...JSON.parse(fs.readFileSync(versionJsonPath).toString()),
         startedAt,
-        started: `${formatDistanceStrict(startedAt)} ago`,
+        started: `${formatDistanceStrict(startedAt, new Date())} ago`,
     };
 };
 
