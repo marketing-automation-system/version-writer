@@ -6,10 +6,13 @@ const formatDistanceStrict = require('date-fns/formatDistanceStrict');
  * @param {Date} startedAt
  */
 const getStatus = (versionJsonPath, startedAt) => {
-    const versionJson = JSON.parse(fs.readFileSync(versionJsonPath).toString());
+    let versionJson = {};
+    if (fs.existsSync(versionJsonPath)) {
+        versionJson = JSON.parse(fs.readFileSync(versionJsonPath).toString());
+        versionJson.builtAtRelative = `${formatDistanceStrict(new Date(versionJson.builtAt), new Date())} ago`;
+    }
     return {
         ...versionJson,
-        builtAtRelative: `${formatDistanceStrict(new Date(versionJson.builtAt), new Date())} ago`,
         startedAt,
         startedAtRelative: `${formatDistanceStrict(startedAt, new Date())} ago`,
     };
