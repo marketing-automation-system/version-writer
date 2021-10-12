@@ -1,6 +1,15 @@
 const execSync = require('child_process').execSync;
 const fs = require('fs');
 const path = require('path');
+const process = require('process');
+
+const outputFile = process.argv[2];
+if (!outputFile) {
+    throw new Error('Usage: node write-version-json.js outputPath');
+}
+const outputPath = path.join(process.cwd(), outputFile);
+console.log('outputPath', outputPath);
+
 
 function getBranchName() {
     try {
@@ -34,4 +43,4 @@ const versionJson = {
 
 console.log(JSON.stringify(versionJson, '', 4));
 
-fs.writeFileSync(path.resolve(__dirname, '../build/version.json'), JSON.stringify(versionJson));
+fs.writeFileSync(outputPath, JSON.stringify(versionJson));
