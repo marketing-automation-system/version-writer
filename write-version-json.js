@@ -8,7 +8,6 @@ if (!outputFile) {
     throw new Error('Usage: node write-version-json.js outputPath');
 }
 const outputPath = path.join(process.cwd(), outputFile);
-console.log('outputPath', outputPath);
 
 function getBranchName() {
     try {
@@ -38,11 +37,16 @@ function getUser() {
     return process.env.USER || null;
 }
 
+function generateTimestamp() {
+    return Math.floor(Date.now() / 1000);
+}
+
 const versionJson = {
     builtAt: new Date().toISOString(),
     builtBy: getUser(),
     branch: getBranchName(),
     commit: getCommitHash(),
+    timestamp: generateTimestamp(),
 };
 
 console.log('Version...');
