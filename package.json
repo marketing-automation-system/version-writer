@@ -1,5 +1,5 @@
 {
-    "name": "@smda/version-writer",
+    "name": "@mas/version-writer",
     "version": "1.0.1",
     "description": "",
     "main": "index.js",
